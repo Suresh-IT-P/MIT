@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>MIT '26 | National Level Technical Symposium</title>
+    <meta name="description"
+        content="MIT '26 - A National Level Technical Symposium organized by the Department of Information Technology at Mahendra Institute of Technology (MIT), Namakkal." />
+</head>
+
+<body>
+    <!-- Hacker Preloader -->
+    <div id="system-preloader" class="system-preloader">
+        <div class="preloader-content">
+            <div class="mit-logo-ascii">
+                <span class="glitch-text" data-text="MIT_NODES">MIT_NODES</span>
+            </div>
+            <div class="circular-decryption">
+                <div class="circle-inner"></div>
+                <div class="circle-outer"></div>
+                <div id="preloader-percent" class="p-percent">0%</div>
+            </div>
+            <div id="preloader-text" class="p-text">ESTABLISHING_NEURAL_LINK...</div>
+        </div>
+        <div class="data-stream-bg" id="preloader-streams">
+            01010101010101010101010101
+            FF A0 3C 12 4D 5E 7F 90 CC
+            BYPASSING_SYMPOSIUM_GATEWAY
+            LOCALIZING_MIT_NODES_ROOT
+            BREACHING_FIREWALL_v2.6.4
+            01010101010101010101010101
+        </div>
+    </div>
+
+    <!-- Boot Screen -->
+    <div id="boot-screen" class="boot-screen">
+        <div id="boot-terminal" class="terminal">
+            <!-- Lines will be injected via JS -->
+        </div>
+
+        <div class="hacking-progress">
+            <div class="progress-label">SYSTEM_BYPASS_IN_PROGRESS...</div>
+            <div class="progress-bar-container">
+                <div id="progress-fill" class="progress-fill"></div>
+                <span id="progress-percent" class="percent">0%</span>
+            </div>
+        </div>
+
+        <button id="boot-btn" class="hidden">
+            :: SYSTEM READY ::
+            <span>TAP TO ENTER SECURE ZONE</span>
+        </button>
+    </div>
+
+    <!-- Mobile OS Environment -->
+    <div id="phone-ui" class="phone-ui hidden">
+        <canvas id="matrix-canvas"></canvas>
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <div class="status-left">
+                <span id="status-time">12:00</span>
+            </div>
+            <div class="status-center">
+                <div class="speaker-grill"></div>
+            </div>
+            <div class="status-right">
+                <span class="signal">📶</span>
+                <span class="wifi">ᯤ</span>
+                <span class="battery">98% 🔋</span>
+            </div>
+        </div>
+
+        <!-- Home Screen -->
+        <main id="home-screen" class="home-screen">
+            <div class="widget-area">
+                <div class="countdown-widget">
+                    <div class="widget-label">DAYS REMAINING</div>
+                    <div id="widget-timer" class="widget-timer">00d 00h</div>
+                </div>
+                <div class="weather-widget">
+                    <div class="city">NAMAKKAL</div>
+                    <div class="temp">33°C</div>
+                    <div class="desc">Sunny</div>
+                </div>
+            </div>
+
+            <div id="app-grid" class="app-grid">
+                <!-- Dynamically Rendered by MIT OS -->
+            </div>
+        </main>
+
+        <!-- App Container (Full Screen Modals) -->
+        <div id="app-container"></div>
+
+        <!-- Bottom Dock Bar -->
+        <nav class="phone-dock">
+            <div class="dock-app" data-app="events">📅</div>
+            <div class="dock-app" data-app="register">👤</div>
+            <div class="dock-app" data-app="contact">📞</div>
+            <div class="dock-app" data-app="about">ℹ️</div>
+        </nav>
+
+        <!-- Home Indicator -->
+        <div class="home-indicator"></div>
+    </div>
+
+    <script type="module" src="/main.js"></script>
+</body>
+
+</html>

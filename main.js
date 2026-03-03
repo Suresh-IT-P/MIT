@@ -208,6 +208,33 @@ document.addEventListener('DOMContentLoaded', () => {
   initCountdown();
   initMatrix();
   initPreloader();
+
+  // Dock bar icon click handlers
+  document.querySelectorAll('.dock-app').forEach(el => {
+    el.onclick = () => launchApp(el.getAttribute('data-app'));
+  });
+
+  // Navigation bar handlers
+  document.getElementById('nav-back').onclick = () => {
+    const views = document.querySelectorAll('.phone-app-view');
+    if (views.length > 0) {
+      const last = views[views.length - 1];
+      last.style.animation = 'appClose 0.3s forwards';
+      setTimeout(() => last.remove(), 300);
+    }
+  };
+
+  document.getElementById('nav-home').onclick = () => {
+    const views = document.querySelectorAll('.phone-app-view');
+    views.forEach(v => {
+      v.style.animation = 'appClose 0.25s forwards';
+      setTimeout(() => v.remove(), 250);
+    });
+  };
+
+  document.getElementById('nav-recent').onclick = () => {
+    // Visual feedback only — no recents view for now
+  };
 });
 
 function initPreloader() {
@@ -215,6 +242,11 @@ function initPreloader() {
   const percent = document.getElementById('preloader-percent');
   const text = document.getElementById('preloader-text');
   const streams = document.getElementById('preloader-streams');
+
+  // System component IDs in order
+  const compIds = ['comp-kernel', 'comp-events', 'comp-ui', 'comp-network', 'comp-security', 'comp-gateway'];
+  const compThresholds = [10, 25, 40, 55, 70, 85]; // % at which each starts loading
+  let loadedIdx = -1;
 
   // High-speed data streams
   const chars = "0123456789ABCDEF!@#$%^&*()_+-=[]{}|;:,.<>?";
@@ -227,30 +259,52 @@ function initPreloader() {
 
   const messages = [
     "DECRYPTING_NEURAL_LINK...",
-    "BYPASSING_SYMPOSIUM_GATE...",
-    "LOCALIZING_MIT_NODES...",
-    "ENABLING_HACK_PROTOCOL...",
+    "LOADING_KERNEL_MODULES...",
+    "FETCHING_EVENT_DATA...",
+    "RENDERING_INTERFACE...",
+    "ESTABLISHING_NETWORK...",
+    "ENABLING_SECURITY...",
     "READY_FOR_BREACH"
   ];
 
   let p = 0;
   const interval = setInterval(() => {
-    p += Math.random() * 8;
+    p += Math.random() * 6;
     if (p >= 100) {
       p = 100;
       clearInterval(interval);
       clearInterval(sInt);
+      // Mark all as loaded
+      compIds.forEach(id => {
+        const el = document.getElementById(id);
+        el.classList.remove('loading');
+        el.classList.add('loaded');
+      });
       setTimeout(() => {
         preloader.style.opacity = '0';
         setTimeout(() => {
           preloader.remove();
           startHackingBoot();
         }, 800);
-      }, 500);
+      }, 600);
     }
+
+    // Update system components
+    for (let i = 0; i < compIds.length; i++) {
+      const el = document.getElementById(compIds[i]);
+      if (p >= compThresholds[i] + 12) {
+        // Loaded
+        el.classList.remove('loading');
+        el.classList.add('loaded');
+      } else if (p >= compThresholds[i]) {
+        // Currently loading
+        el.classList.add('loading');
+      }
+    }
+
     percent.textContent = Math.floor(p) + "%";
     text.textContent = messages[Math.floor((p / 101) * messages.length)];
-  }, 100);
+  }, 120);
 }
 
 function renderIcons() {
@@ -512,7 +566,21 @@ function startHackingBoot() {
   }, 100);
 }
 
+function requestFullScreen() {
+  const el = document.documentElement;
+  if (el.requestFullscreen) {
+    el.requestFullscreen().catch(() => { });
+  } else if (el.webkitRequestFullscreen) {
+    el.webkitRequestFullscreen();
+  } else if (el.mozRequestFullScreen) {
+    el.mozRequestFullScreen();
+  } else if (el.msRequestFullscreen) {
+    el.msRequestFullscreen();
+  }
+}
+
 bootBtn.onclick = () => {
+  requestFullScreen();
   bootScreen.style.opacity = '0';
   setTimeout(() => { bootScreen.classList.add('hidden'); phoneUI.classList.remove('hidden'); initMatrix(); }, 500);
 };

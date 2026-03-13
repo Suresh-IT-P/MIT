@@ -79,8 +79,7 @@ const appData = {
     title: 'Contact Us',
     content: `
       <h2>Organizing Team</h2>
-      <div class="contact-card"><b>Secretary:</b> John Doe <br> <span style="color:var(--accent-green)">📞 98765 43210</span></div>
-      <div class="contact-card"><b>Registrar:</b> Jane Smith <br> <span style="color:var(--accent-green)">📞 87654 32109</span></div>
+      <div class="contact-card"><b>Secretary:</b> Suresh P <br> <span style="color:var(--accent-green)">📞 7200700535</span></div>
       <style>.contact-card { background:#111; padding:16px; border-radius:12px; margin-bottom:12px; border:1px solid #222; }</style>
     `
   },
@@ -105,7 +104,7 @@ const appData = {
   },
   about: {
     title: 'About Mahendra IT',
-    content: `<h2>IT Department</h2><p>The Department of IT at Mahendra IT is dedicated to excellence and innovation.</p>`
+    content: `<h2>IT Department</h2><p>The Department of IT at Mahendra Institute of Technology is dedicated to excellence and innovation. Developed by Suresh P</p>`
   },
   terminal: {
     title: 'Developer Console',
@@ -650,3 +649,4 @@ document.addEventListener('click', (e) => {
     startPaymentBypass();
   }
 });
+
